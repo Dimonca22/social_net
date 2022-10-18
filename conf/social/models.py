@@ -3,12 +3,15 @@ from django.db import models
 
 class User(models.Model):
     username = models.CharField(verbose_name='Имя', max_length=50)
-    password = models.CharField(widget=forms.PasswordInput)
+    password = models.CharField(verbose_name='пароль', max_length=50)
     email = models.EmailField(max_length=100)
 
     class Meta:
-        verbose_name = 'Создать имя'
-        verbose_name_plural = 'Создать имена'
+        verbose_name = 'Создать пользователя'
+        verbose_name_plural = 'Создать пользователей'
+
+    def __str__(self):
+        return self.username
 
 
 class Post(models.Model):
